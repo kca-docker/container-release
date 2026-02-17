@@ -2,7 +2,6 @@
 steps:
   build-container:
     image: docker:26-dind
-    privileged: true
     environment:
       DOCKER_TLS_CERTDIR: ""   # vereinfacht CLI-Nutzung im Container
       DOCKER_BUILDKIT: "1"
