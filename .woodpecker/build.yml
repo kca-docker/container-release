@@ -1,0 +1,29 @@
+
+pipeline:
+  build-container:
+    image: docker:26-cli
+    environment:
+      - DOCKER_BUILDKIT=1
+    commands:
+      - apk add --no-cache docker-buildx
+      - docker buildx create --use
+      - docker buildx build \
+          --platform ${PLATFORM:-linux/amd64} \
+          -t my-python-app:latest \
+          --output type=docker,dest=python-container.tar \
+          .
+
+    when:
+      event: push
+
+  release:
+    image: woodpeckerci/plugin-github-release
+    settings:
+      api_key: ${GITHUB_TOKEN}
+      title: "Python Container Release"
+      tag: "v${CI_BUILD_NUMBER}"
+      files:
+        - python-container.tar
+    when:
+      event: push
+      branch: main
