@@ -8,7 +8,7 @@ pipeline:
       - apk add --no-cache docker-buildx
       - docker buildx create --use
       - docker buildx build \
-          --platform ${PLATFORM:-linux/amd64} \
+          --platform ${PLATFORM:-linux/arm64} \
           -t my-python-app:latest \
           --output type=docker,dest=python-container.tar \
           .
