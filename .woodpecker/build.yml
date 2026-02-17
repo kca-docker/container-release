@@ -1,5 +1,5 @@
 
-pipeline:
+steps:
   build-container:
     image: docker:26-cli
     environment:
