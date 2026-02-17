@@ -3,7 +3,7 @@ steps:
   build-container:
     image: docker:26-cli
     environment:
-      - DOCKER_BUILDKIT=1
+      DOCKER_BUILDKIT: "1"
     commands:
       - apk add --no-cache docker-buildx
       - docker buildx create --use
