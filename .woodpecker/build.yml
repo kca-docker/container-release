@@ -19,7 +19,9 @@ pipeline:
   release:
     image: woodpeckerci/plugin-github-release
     settings:
-      api_key: ${GITHUB_TOKEN}
+      #api_key: ${GITHUB_TOKEN}      
+      user: DOCKER_BKSOL_USER
+      password: DOCKER_BKSOL_PASS
       title: "Python Container Release"
       tag: "v${CI_BUILD_NUMBER}"
       files:
