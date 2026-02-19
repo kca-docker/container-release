@@ -15,7 +15,7 @@ steps:
         branch: main
         path:
           include: ['/backend/python/Dockerfile', '.woodpecker/build_backend_py.yml']
-      - event: [cron, manual]
+      - event: [tag]
         branch: main
     image: woodpeckerci/plugin-docker-buildx
     settings:
@@ -42,5 +42,5 @@ steps:
       files:
         - BackendPython_${CI_PIPELINE_STARTED}_build.tar
     when:
-      event: push
+      event: tag
       branch: main
