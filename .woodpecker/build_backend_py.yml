@@ -2,7 +2,7 @@
 variables:
   - &file Backend_Py_Dockerfile
   - &dhub https://index.docker.io/v1/
-  - &arch linux/arm/v7,linux/arm64/v8,linux/amd64
+  - &arch linux/arm64/v8
   - &repo bksolutions/test/backend-python
 
 
@@ -32,7 +32,7 @@ steps:
 
 
   release:
-    image: woodpeckerci/plugin-github-release
+    image: woodpeckerci/plugin-release
     settings:
       #api_key: ${GITHUB_TOKEN}      
       user: DOCKER_BKSOL_USER
